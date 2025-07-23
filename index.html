@@ -1,0 +1,204 @@
+<?php
+$db = mysqli_connect("localhost", "root", "", "difka");
+$sukses = false;
+if (!empty($_POST)) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+    $sql = "INSERT INTO kontak (name, email, message) VALUES ('$name', '$email', '$message')";
+    mysqli_query($db, $sql);
+    $sukses = true;
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Developer</title>
+    <link rel="stylesheet" href="Web.css">
+    <link rel="icon" type="image/x-icon" href="Zikri zr (1).jpg">
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Overlay untuk menutup sidebar -->
+    <div class="overlay" id="overlay"></div>
+
+    <div class="hamburger" onclick="toggleSidebar()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <nav id="sidebar" class="sidebar-hidden">
+        <img class="muka" src="Zikri zr (1).jpg" alt="muka">
+        <h1 class="Nama">DIFKA FAUZAN</h1>
+        <h2 class="perkerjaan"> <a class="link" href="https://www.smkn1-sby.sch.id/jurusan/profil/1">RPL </a>(Software Engineering)</h2>
+        
+        <ul>
+            <li><a href="#home" onclick="closeSidebar()">HOME</a></li>
+            <li><a href="#tentang-saya" onclick="closeSidebar()">ABOUT</a></li>
+            <li><a href="#skill" onclick="closeSidebar()">SKILL</a></li>
+            <li><a href="#projek" onclick="closeSidebar()">PROJECT</a></li>
+            <li><a href="#kontak" onclick="closeSidebar()">CONTACT</a></li>
+        </ul>
+
+        <!-- Social Media Icons -->
+        <div class="social-media">
+            <h3>Connect with me</h3>
+            <div class="social-icons">
+                <a href="https://wa.me/qr/KKDOBESSD54SC1" target="_blank" class="social-link whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.instagram.com/zree_dif?igsh=MWVjeDIzeXNpZXljNw==" target="_blank" class="social-link instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://github.com/Zreecraft" target="_blank" class="social-link github">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:difkafauzan27@gmail.com" class="social-link email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="main-content" id="mainContent">
+        <section id="home" class="scroll-animation">
+            <div>
+                <img class="kotak" src="yaa.png" alt="kotak">
+                <h1 id="home" class="judul">I am <br> <a class="judul2">a Web Developer</a></h1>
+                <p class="kata"><a class="merah">*</a>No wealth link education and no poverty link ignorance<a class="merah">*<br>~ali bin abi thalib</a></p>
+            </div>
+            <div class="garis"><hr style="border: 10px solid black;"></div>
+        </section>
+
+        <section id="tentang-saya" class="scroll-animation">
+            <div class="tentang-saya">
+                <img src="WIN_20241111_16_38_17_Pro.jpg" alt="foto saya" width="200px">
+                <h1>BIODATA</h1>
+                <h2>Hello, my name is Difka Fauzan Putra Febriyan. <br>
+                    I'm a 10th grade student at SMK Negeri 1 <br>
+                    Surabaya with a strong passion and talent for sports, especially volleyball. <br>
+                    I regularly train in beach volleyball every Monday, Wednesday, Friday, and Sunday afternoon, <br>
+                    and I also attend club volleyball practice every Tuesday, Thursday, and Saturday <night class="br"></night>
+                    <br><br>
+                    Besides sports, I also enjoy front-end development. <br>
+                    I love creating attractive and interactive user interfaces, <br>
+                    even though I'm not very fond of back-end logic. <br>
+                    I find the visual and user experience aspects more <br>
+                    engaging than the complex code behind them. <br>
+                    I'm particularly interested in UI/UX design because I enjoy designing <br>
+                    layouts that are both functional and visually appealing. <br>
+                    <br><br>
+                    While I enjoy both worlds, my main focus is volleyball, <br>
+                    which I see as a path to a future career and achievements. <br>
+                    Coding is more of a side passion that I pursue in my free time, <br>
+                    while my full commitment is toward growing as a volleyball <br>
+                    athlete and reaching a higher level in this field. <br>
+                </h2>
+                <div class="garis2"><hr style="border: 10px solid black;"></div>
+            </div>
+        </section>
+
+        <section id="skill" class="scroll-animation">
+            <div class="skill">
+                <h2>I have expertise in various fields, ranging from coding to playing games. Additionally, I am quite skilled in various sports. These are my skills, which allow me to master many things, even though adapting can sometimes be quite challenging. Here are my skills :</h2>
+                <div class="html"><img src="html.png" alt="HTML"></div>
+                <div class="css"><img src="css.png" alt="CSS"></div>
+                <div class="fifa"><img src="fifa.png" alt="FIFA"></div>
+                <div class="pes"><img src="pes.png" alt="PES"></div>
+                <div class="valo"><img src="figma.png" alt="Figma"></div>
+                <div class="voli"><img src="logo_pbvsi_png-removebg-preview.png" alt="Volleyball"></div>
+                <div class="ml"><img src="ml.png" alt="Mobile Legends"></div>
+            </div>
+            <div class="garis3"><hr style="border: 10px solid black;"></div>
+        </section>
+
+        <section id="projek" class="scroll-animation">
+            <div class="projek">
+                <h1 class="volioo">Here are some projects I have worked on</h1>
+                <div class="volio"><img src="phorto.jpg" alt="Project 1"></div>
+                <div class="volio2"><img src="Scratch (1) - Copy.png" alt="Project 2"></div>
+                <div class="volio3"><img src="cakpor.png" alt="Project 3"></div>
+            </div>
+            <div class="garis4"><hr style="border: 10px solid black;"></div>
+        </section>
+    </div>
+
+    <section id="kontak" class="scroll-animation">
+  <div class="contact-container">
+    <h2>Contact Me</h2>
+    <?php if ($sukses) { ?>
+      <p style="color: green;">Mantap! Pesanmu berhasil dikirim.</p>
+    <?php } ?>
+    <form action="" method="POST" class="contact-form">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" placeholder="Your full name" required>
+
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" placeholder="Your email address" required>
+
+      <label for="message">Message</label>
+      <textarea name="message" id="message" rows="5" placeholder="Write your message here" required></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</section>
+
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            const mainContent = document.getElementById("mainContent");
+            const hamburger = document.querySelector(".hamburger");
+            const overlay = document.getElementById("overlay");
+            
+            sidebar.classList.toggle("sidebar-hidden");
+            mainContent.classList.toggle("shifted");
+            hamburger.classList.toggle("active");
+            overlay.classList.toggle("active");
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            const mainContent = document.getElementById("mainContent");
+            const hamburger = document.querySelector(".hamburger");
+            const overlay = document.getElementById("overlay");
+            
+            sidebar.classList.add("sidebar-hidden");
+            mainContent.classList.remove("shifted");
+            hamburger.classList.remove("active");
+            overlay.classList.remove("active");
+        }
+
+        // Close sidebar when clicking overlay
+        document.getElementById("overlay").addEventListener("click", closeSidebar);
+
+        // Close sidebar with ESC key
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape") {
+                closeSidebar();
+            }
+        });
+
+        // Scroll animation observer
+        document.addEventListener("DOMContentLoaded", function () {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                    }
+                });
+            });
+
+            document.querySelectorAll(".scroll-animation").forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

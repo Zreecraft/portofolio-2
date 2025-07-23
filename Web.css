@@ -1,0 +1,695 @@
+* {
+    scroll-behavior: smooth;
+}
+
+.scroll-animation {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animation.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* OVERLAY */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 9997;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* HAMBURGER MENU */
+.hamburger {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hamburger .bar {
+    height: 4px;
+    width: 100%;
+    background-color: #000;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Hamburger Animation */
+.hamburger.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* SIDEBAR NAV */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100%;
+    background-color: #f4f5f9;
+    padding-top: 60px;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 9998;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+#sidebar.sidebar-hidden {
+    transform: translateX(-100%);
+}
+
+#sidebar:not(.sidebar-hidden) {
+    transform: translateX(0);
+}
+
+#sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#sidebar ul li {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#sidebar ul li a {
+    color: #000;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+#sidebar ul li a:hover {
+    color: #e31b6c;
+    background-color: rgba(227, 27, 108, 0.1);
+    transform: translateX(5px);
+}
+
+/* SOCIAL MEDIA STYLES */
+.social-media {
+    margin-top: 30px;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.social-media h3 {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+.whatsapp:hover {
+    background: linear-gradient(135deg, #20C55A, #0F7A6B);
+}
+
+.instagram {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.instagram:hover {
+    background: radial-gradient(circle at 30% 107%, #fcf086 0%, #fcf086 5%, #fc4838 45%, #c5138e 60%, #1749da 90%);
+}
+
+.github {
+    background: linear-gradient(135deg, #333, #24292e);
+}
+
+.github:hover {
+    background: linear-gradient(135deg, #222, #1a1e22);
+}
+
+.email {
+    background: linear-gradient(135deg, #EA4335, #DB4437);
+}
+
+.email:hover {
+    background: linear-gradient(135deg, #d73925, #c23321);
+}
+
+/* MAIN CONTENT CONTAINER */
+.main-content {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    min-height: 100vh;
+}
+
+.main-content.shifted {
+    transform: translateX(280px);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: #e31b6c;
+    z-index: 1;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+    overflow-x: hidden;
+}
+
+.muka {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-left: 75px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border: 3px solid #e31b6c;
+    transition: all 0.3s ease;
+}
+
+.muka:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(227, 27, 108, 0.3);
+}
+
+section {
+    min-height: 110vh;
+}
+
+.Nama {
+    margin-left: 81px;
+    font-size: 20px;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.perkerjaan {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    margin-left: 63px;
+    margin-top: -15px;
+    color: #666;
+}
+
+.perkerjaan a:link {
+    color: #e31b6c;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.perkerjaan a:hover {
+    text-decoration: underline;
+}
+
+.judul {
+    padding-left: 200px;
+    padding-top: 170px;
+    font-size: 80px;
+    transition: all 0.3s ease;
+}
+
+.judul2 {
+    font-size: 60px;
+    color: #e31b6c;
+}
+
+.kotak {    
+    width: 640px;
+    height: 900px;
+    margin-left: 750px;
+    padding-top: -900px;
+    padding-bottom: 800px;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.kata {
+    padding-left: 200px;
+    margin-top: -40px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+}
+
+.kata .merah {
+    color: #e31b6c;
+}
+
+.garis {
+    margin-right: -8px;
+    margin-left: -8px;
+    margin-top: 480px;
+    transition: all 0.3s ease;
+}
+
+/* ABOUT SECTION */
+.tentang-saya img {
+    margin-left: 650px;
+    border-radius: 50%;
+    border: 5px solid #000000;
+    margin-bottom: 150px;
+    margin-top: 100px;
+    transition: all 0.3s ease;
+}
+
+.tentang-saya img:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+.tentang-saya h1 {
+    margin-left: 700px;
+    margin-top: -40px;
+    margin-bottom: 55px;
+    transition: all 0.3s ease;
+}
+
+.tentang-saya h2 {
+    margin-left: -10px;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    padding-left: 0px;
+    padding-right: 100px;
+    transition: all 0.3s ease;
+}
+
+.garis2 {
+    margin-right: -8px;
+    margin-left: -8px;
+    margin-top: 220px;
+    transition: all 0.3s ease;
+}
+
+/* SKILLS SECTION */
+.skill h2 {
+    margin-left: 0px;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 80px;
+    transition: all 0.3s ease;
+}
+
+.html img {
+    margin-left: 160px;
+    padding-top: 50px;
+    width: 200px;
+    transition: all 0.3s ease;
+}
+
+.css img {
+    position: absolute;
+    left: 27rem;
+    bottom: 39rem;
+    width: 200px;
+    transition: all 0.3s ease;
+}
+
+.fifa img {
+    width: 450px;
+    position: absolute;
+    left: 42rem;
+    bottom: 36rem;
+    transition: all 0.3s ease;
+}
+
+.pes img {
+    width: 280px;
+    position: absolute;
+    left: 70rem;
+    bottom: 35rem;
+    transition: all 0.3s ease;
+}
+
+.valo img {
+    width: 250px;
+    margin-left: 250px;
+    padding-top: 100px;
+    transition: all 0.3s ease;
+}
+
+.voli img {
+    width: 190px;
+    position: absolute;
+    left: 40rem;
+    bottom: 19rem;
+    transition: all 0.3s ease;
+}
+
+.ml img {
+    width: 400px;
+    position: absolute;
+    left: 58rem;
+    bottom: 13rem;
+    transition: all 0.3s ease;
+}
+
+/* Hover effects for skill images */
+.skill img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+.garis3 {
+    margin-right: -8px;
+    margin-left: -8px;
+    margin-top: 160px;
+    transition: all 0.3s ease;
+}
+
+/* PROJECTS SECTION */
+.projek {
+    margin-left: 300px;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 80px;
+    transition: all 0.3s ease;
+}
+
+.volio img {
+    margin-left: -900px;
+    padding-top: 43px;
+    width: 500px;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.volioo {
+    margin-left: -310px;
+}
+
+.volio2 img {
+    width: 500px;
+    position: absolute;
+    left: 55rem;
+    bottom: 35rem;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.volio3 img {
+    width: 500px;
+    position: absolute;
+    left: 36rem;
+    bottom: 14rem;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effects for project images */
+.projek img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.garis4 {
+    margin-right: -8px;
+    margin-left: -8px;
+    margin-top: 440px;
+    transition: all 0.3s ease;
+}
+
+/* CONTACT SECTION */
+#kontak {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background-color: #ffffff;
+}
+
+.contact-container {
+    background-color: #f5f5f5;
+    padding: 60px;
+    border-radius: 30px;
+    width: 90%;
+    max-width: 900px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.contact-container h2 {
+    text-align: center;
+    color: #000000;
+    margin-bottom: 40px;
+    font-size: 40px;
+}
+
+.contact-form label {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #000000;
+    display: block;
+    font-size: 18px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 25px;
+    border: 2px solid black;
+    border-radius: 14px;
+    font-size: 18px;
+    resize: none;
+    outline: none;
+    background-color: white;
+    color: black;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #333;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 18px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #444;
+}
+
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 1200px) {
+    .main-content.shifted {
+        transform: translateX(250px);
+    }
+    
+    #sidebar {
+        width: 250px;
+    }
+    
+    .judul {
+        font-size: 60px;
+        padding-left: 250px;
+    }
+    
+    .kotak {
+        margin-left: 700px;
+        width: 450px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main-content.shifted {
+        transform: translateX(200px);
+    }
+    
+    #sidebar {
+        width: 200px;
+    }
+    
+    .judul {
+        font-size: 40px;
+        padding-left: 50px;
+        padding-top: 100px;
+    }
+    
+    .judul2 {
+        font-size: 30px;
+    }
+    
+    .kotak {
+        display: none;
+    }
+    
+    .kata {
+        padding-left: 50px;
+    }
+    
+    .tentang-saya img {
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .tentang-saya h1 {
+        margin-left: 0;
+        text-align: center;
+    }
+    
+    .tentang-saya h2 {
+        margin-left: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .skill h2 {
+        margin-left: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .projek {
+        margin-left: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    /* Stack skill images vertically on mobile */
+    .skill img {
+        position: static !important;
+        display: block;
+        margin: 20px auto;
+        width: 150px !important;
+    }
+    
+    /* Stack project images vertically on mobile */
+    .projek img {
+        position: static !important;
+        display: block;
+        margin: 20px auto !important;
+        width: 300px !important;
+    }
+
+    /* Social media responsive */
+    .social-icons {
+        gap: 10px;
+    }
+    
+    .social-link {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hamburger {
+        top: 15px;
+        left: 15px;
+    }
+    
+    .main-content.shifted {
+        transform: translateX(180px);
+    }
+    
+    #sidebar {
+        width: 180px;
+    }
+    
+    .judul {
+        font-size: 30px;
+        padding-left: 20px;
+    }
+    
+    .judul2 {
+        font-size: 24px;
+    }
+
+    .social-media {
+        padding: 15px;
+    }
+    
+    .social-media h3 {
+        font-size: 14px;
+    }
+}
